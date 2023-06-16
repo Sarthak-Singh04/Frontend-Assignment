@@ -1,6 +1,8 @@
-"use client";
+"use client"
 import React, { useState } from "react";
-import ReactQuill from "react-quill";
+import dynamic from "next/dynamic";
+
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 import "react-quill/dist/quill.snow.css";
 
 function Page() {
@@ -14,17 +16,6 @@ function Page() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    {/* if i save this data on the server so i'm using this*/}
-    const data=fetch(" ");
-
-
-    data.set('title',title);
-    data.set('summary',summary);
-    data.set('content',content)
-
-
-
     // Handle form submission here
     // ...
   };
@@ -55,11 +46,13 @@ function Page() {
         </div>
 
         <div className="mb-6">
-          <ReactQuill
-            value={content}
-            onChange={handleContentChange}
-            className="editor"
-          />
+          {typeof window !== "undefined" && (
+            <ReactQuill
+              value={content}
+              onChange={handleContentChange}
+              className="editor"
+            />
+          )}
         </div>
 
         <button
