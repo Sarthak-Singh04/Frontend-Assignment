@@ -1,6 +1,6 @@
 "use client"
+import StoreData from '@/StoeData';
 import { useState } from 'react';
-import dummyData from '@/Data';
 import { TiEdit, TiDelete } from 'react-icons/ti';
 
 const generateRandomColor = () => {
@@ -12,11 +12,9 @@ const generateRandomColor = () => {
   return color;
 };
 
-export default function Home() {
-  const [data, setData] = useState(dummyData);
+function Page() {
+  const [data, setData] = useState(StoreData);
   const categoryColorMap = {};
-
-  // Generate unique background colors for each category
   data.forEach((item) => {
     item.categories.forEach((category) => {
       if (!categoryColorMap[category]) {
@@ -28,12 +26,12 @@ export default function Home() {
   const handleDelete = (itemId) => {
     setData((prevData) => prevData.filter((item) => item.id !== itemId));
   };
-
+console.log(StoreData);
   return (
     <div>
-      <div className="mt-10 text-2xl font-semibold border-b-2">Recommended Topics</div>
+      <div className="mt-20 border-b-2"></div>
       <div className="flex flex-col mt-6">
-        {data.map((item) => (
+        {StoreData.map((item) => (
           <div key={item.id} className="flex justify-between items-center border-b-2 py-4">
             <div>
               <div className="text-xl font-semibold mb-2">{item.title}</div>
@@ -41,7 +39,7 @@ export default function Home() {
                 {item.categories.map((category, index) => (
                   <div
                     key={index}
-                    className="px-3 py-1 mr-2 mb-2 text-sm rounded-full text-[#fff]"
+                    className="px-3 py-1 mr-2 mb-2 text-sm rounded-full text-white"
                     style={{ backgroundColor: categoryColorMap[category] }}
                   >
                     {category}
@@ -68,3 +66,5 @@ export default function Home() {
     </div>
   );
 }
+
+export default Page;
