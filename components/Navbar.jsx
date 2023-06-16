@@ -17,7 +17,7 @@ function Navbar() {
   return (
     <>
       <header className="header sticky top-0 bg-white shadow-md flex items-center justify-between px-8 py-4 mb-4">
-      <Link href="/">        <div className="font-bold text-lg">Categories</div></Link>
+      <Link href="/">        <div className="font-bold text-lg">Speedy Brand</div></Link>
 
 
         <nav className="nav font-semibold text-lg">

@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import dummyData from '@/Data';
 import { TiEdit, TiDelete } from 'react-icons/ti';
+import Link from 'next/link';
 
 const generateRandomColor = () => {
   const letters = '0123456789ABCDEF';
@@ -50,10 +51,14 @@ export default function Home() {
               </div>
             </div>
             <div className="flex">
-              <button className="flex px-4 rounded-md py-2 items-center bg-transparent hover:bg-gray-300 focus:outline-none transition duration-200 ease-in-out text-gray-500 hover:text-gray-700">
+            <Link href="/editor">
+            <button className="flex px-4 rounded-md py-2 items-center bg-transparent hover:bg-gray-300 focus:outline-none transition duration-200 ease-in-out text-gray-500 hover:text-gray-700">
                 <h3 className="mr-2">Write</h3>
                 <TiEdit className="text-gray-500" />
               </button>
+
+            </Link>
+           
               <button
                 className="flex px-4 rounded-md py-2 items-center bg-transparent hover:bg-red-300 focus:outline-none transition duration-200 ease-in-out text-red-500 hover:text-red-700"
                 onClick={() => handleDelete(item.id)}
